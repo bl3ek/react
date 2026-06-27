@@ -1,20 +1,23 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router";
-import React from 'react';
-import { createLayoutStyles } from "../../constants/globalStyles";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "@/hooks/useTheme";
 
 export default function TabLayout() {
   const { colors } = useTheme();
-  const styles = createLayoutStyles(colors);
 
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarStyle: styles.tabBar,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+          borderTopWidth: 1,
+        },
+        headerStyle: { backgroundColor: colors.surface },
+        headerTintColor: colors.text,
       }}
     >
       <Tabs.Screen
@@ -27,11 +30,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="explore"
+        options={{
+          title: "Notes",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="document-text-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="settings"
         options={{
           title: "Settings",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
+            <Ionicons name="settings-outline" size={size} color={color} />
           ),
         }}
       />

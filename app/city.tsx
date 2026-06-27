@@ -11,7 +11,7 @@ export default function CityScreen() {
         <Text style={cityStyles.headerTitle}>Вроцлав</Text>
 
         <Image
-          source={require('../assets/images/city.jpg')}
+          source={require('../assets/images/wroclaw.jpg')}
           style={cityStyles.cityImage}
         />
 

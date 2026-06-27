@@ -1,24 +1,34 @@
-import React from 'react';
-import { Text, TouchableOpacity, View } from "react-native";
+import DangerZone from "@/components/DangerZone";
+import HeaderSettings from "@/components/HeaderSettings";
+import Preferences from "@/components/Preferences";
+import ProgressStats from "@/components/ProgressStats";
+import useTheme from "@/hooks/useTheme";
+import { createStyles } from "@/styles/settings.styles";
+import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { createSettingsStyles } from "../../constants/globalStyles";
-import useTheme from "../../hooks/useTheme";
 
 export default function SettingsScreen() {
-  const { colors, isDarkMode, toggleDarkMode } = useTheme();
-  const styles = createSettingsStyles(colors);
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Settings</Text>
-        
-        <TouchableOpacity onPress={toggleDarkMode} style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.buttonText}>
-            {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          </Text>
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView style={styles.container} edges={["bottom"]}>
+      <HeaderSettings />
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}
+      >
+        <View>
+          <Preferences />
+        </View>
+        <View>
+          <ProgressStats />
+        </View>
+        <View>
+          <DangerZone />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

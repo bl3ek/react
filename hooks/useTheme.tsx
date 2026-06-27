@@ -10,6 +10,9 @@ export interface ColorScheme {
   primary: string;
   border: string;
   shadow: string;
+  success: string;
+  warning: string;
+  danger: string;
 }
 
 // Конкретні палітри кольорів для обох тем
@@ -18,9 +21,12 @@ const lightColors: ColorScheme = {
   surface: '#ffffff',
   text: '#0f172a',
   textMuted: '#64748b',
-  primary: '#2dd4bf', // Стильний бірюзовий колір
+  primary: '#2dd4bf',
   border: '#e2e8f0',
   shadow: '#0f172a',
+  success: '#10B981',
+  warning: '#F59E0B',
+  danger: '#EF4444',
 };
 
 const darkColors: ColorScheme = {
@@ -31,6 +37,9 @@ const darkColors: ColorScheme = {
   primary: '#2dd4bf',
   border: '#334155',
   shadow: '#000000',
+  success: '#10B981',
+  warning: '#F59E0B',
+  danger: '#EF4444',
 };
 
 interface ThemeContextType {
